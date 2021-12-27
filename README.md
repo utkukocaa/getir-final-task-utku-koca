@@ -15,7 +15,7 @@ git clone https://github.com/utkukocaa/getir-final-task-utku-koca.git
 Install the dependencies
 
 ```bash
-git npm install
+ npm install
 ```
 
 ## Usage
@@ -23,13 +23,46 @@ git npm install
 Start to project
 
 ```bash
-git npm start
+ npm start
 ```
 
 In order to start tests
 
 ```bash
-git npm test
+ npm test
+```
+
+## ENDPOINTS
+
+**POST /api/v1/records**
+
+| Payloads  | Types  | Format           | Required |
+| :-------- | :----- | :--------------- | :------- |
+| startDate | String | YYYY-MM-DD       | Required |
+| endDate   | String | YYYY-MM-DD       | Required |
+| minCount  | Number | Positive Integer | Required |
+| maxCount  | Number | Positive Integer | Required |
+
+**Response**
+
+```
+//Example response
+{
+    "code": 0,
+    "msg": "Success",
+    "records": [
+        {
+            "key": "TAKwGc6Jr4i8Z487",
+            "createdAt": "2017-01-28T01:22:14.398Z",
+            "totalCount": 310
+        },
+        {
+            "key": "TAKwGc6Jr4i8Z487",
+            "createdAt": "2017-01-28T01:22:14.398Z",
+            "totalCount": 170
+        },
+}
+
 ```
 
 ## About the project
@@ -47,11 +80,11 @@ Error handling is done by custom error class which extended default Error class.
 Joi is used as validation, there is no need to save data in to the database, was not implemented any other validation like mongoose.
 It controls written inputs;
 
-startDate and endDate must be YYYY-MM-DD format
-maxCount and minCunt must be number
-startDate can't be after the endDate
-Either both dates can not be after now becauese they call records created.
-minCount can t be higher than maxCount
+- startDate and endDate must be YYYY-MM-DD format
+- maxCount and minCunt must be number
+- startDate can't be after the endDate
+- Either both dates can not be after now becauese they call records created.
+- minCount can t be higher than maxCount
 
 Also they are tested by jest and supertest libraries.
 
@@ -65,25 +98,29 @@ I divided tests by 4 parts in terms of checking correctness of given inputs, ret
 
 given startDate, endDate, maxCount, minCount;
 
-must response with 200 status code
-must specify json in the content type header
-must response with a json object contaning code, msg, records
+- must response with 200 status code
+- must specify json in the content type header
+- must response with a json object contaning code, msg, records
 
 ###### Second part tests:
 
-must records has 3 properties which are key, createdAt, totalCount
-must records are between given dates
-must records are between min and max counts
+given startDate, endDate, maxCount, minCount;
+
+- must records has 3 properties which are key, createdAt, totalCount
+- must records are between given dates
+- must records are between min and max counts
 
 ###### Third Part tests:
 
-startDate is after endDate must response with 400 status code
-endDate or startDate after current Date must response with 400 status code
-minCount grater than maxCount must response with 400 status code
+given startDate, endDate, maxCount, minCount;
+
+- startDate is after endDate must response with 400 status code
+- endDate or startDate after current Date must response with 400 status code
+- minCount grater than maxCount must response with 400 status code
 
 ###### Fouth Part test:
 
-when any of the payloads is missed, must respond with a status code of 400
+- when any of the payloads is missed, must respond with a status code of 400
 
 ## About possible future implementations
 
