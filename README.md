@@ -26,7 +26,7 @@ Start to project
  npm start
 ```
 
-In order to start tests
+In order to run tests
 
 ```bash
  npm test
@@ -124,15 +124,15 @@ given startDate, endDate, maxCount, minCount;
 
 ## About possible future implementations
 
-If there is no security restriction, the payloads can send with get request as queries. It would be more light and higher performance.
+- If there is no security restriction, the payloads can send with get request as queries. It would be more light and higher performance.
 
-The payloads can be optinal like i mentioned in the about project section.
+- The payloads can be optinal like i mentioned in the about project section.
 
-Authentication can be added
+- Authentication can be added
 
-Any specific record can be called according to key value.
+- Any specific record can be called according to key value.
 
-Record can be sorted by any criteria like count numbers, createdAt, alphabetically..
+- Record can be sorted by any criteria like count numbers, createdAt, alphabetically..
 
 ## Crucial Points
 
